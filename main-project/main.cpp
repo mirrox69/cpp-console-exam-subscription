@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -17,16 +18,36 @@ int main()
     try
     {
         read("data.txt", subscriptions, size);
+        cout << "***** Итоги сессии *****\n\n";
         for (int i = 0; i < size; i++)
         {
-            cout << subscriptions[i]->student.last_name << ' ';
-            cout << subscriptions[i]->student.first_name << ' ';
-            cout << subscriptions[i]->student.middle_name << ' ';
-            cout << subscriptions[i]->examdate.day << ' ';
-            cout << subscriptions[i]->examdate.month << ' ';
-            cout << subscriptions[i]->examdate.year << ' ';
-            cout << subscriptions[i]->mark << ' ';
-            cout << subscriptions[i]->title << ' ';
+            /********** вывод читателя **********/
+            cout << "Студент: ";
+            // вывод фамилии
+            cout << subscriptions[i]->student.last_name << " ";
+            // вывод первой буквы имени
+            cout << subscriptions[i]->student.first_name << " ";
+            // вывод первой буквы отчества
+            cout << subscriptions[i]->student.middle_name << "";
+            cout << '\n';
+            cout << "Дата экзамена : ";
+            cout << setfill('0') << subscriptions[i]->examdate.year << '-';
+            // вывод месяца
+            cout << setw(2) << setfill('0') << subscriptions[i]->examdate.month << '-';
+            // вывод числа
+            cout << setw(2) << setfill('0') << subscriptions[i]->examdate.day;
+            cout << '\n';
+            /********** вывод книги **********/
+            cout << "Оценка и дисциплина : ";
+            // вывод фамилии автора
+            cout << subscriptions[i]->mark << " ";
+            // вывод первой буквы имени автора
+            cout << '"' << subscriptions[i]->title << '"';
+            cout << '\n';
+            /********** вывод даты выдачи **********/
+            // вывод года
+            /********** вывод даты возврата **********/
+            // вывод года
             cout << '\n';
         }
         for (int i = 0; i < size; i++)
