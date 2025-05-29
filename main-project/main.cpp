@@ -12,7 +12,8 @@ int main()
     setlocale(LC_ALL, "Russian");
     cout << "Лабораторная работа №4. GIT\n";
     cout << "Вариант №8. Итоги сессии\n";
-    cout << "Автор: Иван Мирончик\n\n";
+    cout << "Автор: Иван Мирончик\n";
+    cout << "Группа: 24ПИ\n";
     exam_subscription* subscriptions[MAX_FILE_ROWS_COUNT];
     int size;
     try
@@ -59,5 +60,5 @@ int main()
     {
         cout << error << '\n';
     }
-    return 0;
+   
 }
