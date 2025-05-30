@@ -1,4 +1,4 @@
-#include <iostream>
+Ôªø#include <iostream>
 #include <iomanip>
 
 using namespace std;
@@ -6,50 +6,122 @@ using namespace std;
 #include "exam_subscription.h"
 #include "file_reader.h"
 #include "constants.h"
+#include "filter.h"
+#include "insert.h" 
+void output(exam_subscription* subscriptions) {
+    
+    
+        /********** –≤—ã–≤–æ–¥ —á–∏—Ç–∞—Ç–µ–ª—è **********/
+        cout << "–°—Ç—É–¥–µ–Ω—Ç: ";
+        // –≤—ã–≤–æ–¥ —Ñ–∞–º–∏–ª–∏–∏
+        cout << subscriptions->student.last_name << " ";
 
+        // –≤—ã–≤–æ–¥ –ø–µ—Ä–≤–æ–π –±—É–∫–≤—ã –∏–º–µ–Ω–∏
+        cout << subscriptions->student.first_name << " ";
+        // –≤—ã–≤–æ–¥ –ø–µ—Ä–≤–æ–π –±—É–∫–≤—ã –æ—Ç—á–µ—Å—Ç–≤–∞
+        cout << subscriptions->student.middle_name << "";
+        cout << '\n';
+        cout << "–î–∞—Ç–∞ —ç–∫–∑–∞–º–µ–Ω–∞ : ";
+        cout << setfill('0') << subscriptions->examdate.year << '-';
+        // –≤—ã–≤–æ–¥ –º–µ—Å—è—Ü–∞
+        cout << setw(2) << setfill('0') << subscriptions->examdate.month << '-';
+        // –≤—ã–≤–æ–¥ —á–∏—Å–ª–∞
+        cout << setw(2) << setfill('0') << subscriptions->examdate.day;
+        cout << '\n';
+        /********** –≤—ã–≤–æ–¥ –∫–Ω–∏–≥–∏ **********/
+        cout << "–û—Ü–µ–Ω–∫–∞ –∏ –¥–∏—Å—Ü–∏–ø–ª–∏–Ω–∞ : ";
+        // –≤—ã–≤–æ–¥ —Ñ–∞–º–∏–ª–∏–∏ –∞–≤—Ç–æ—Ä–∞
+        cout << subscriptions->mark << " ";
+        // –≤—ã–≤–æ–¥ –ø–µ—Ä–≤–æ–π –±—É–∫–≤—ã –∏–º–µ–Ω–∏ –∞–≤—Ç–æ—Ä–∞
+        cout << '"' << subscriptions->title << '"';
+        cout << '\n';
+        /********** –≤—ã–≤–æ–¥ –¥–∞—Ç—ã –≤—ã–¥–∞—á–∏ **********/
+        // –≤—ã–≤–æ–¥ –≥–æ–¥–∞
+        /********** –≤—ã–≤–æ–¥ –¥–∞—Ç—ã –≤–æ–∑–≤—Ä–∞—Ç–∞ **********/
+        // –≤—ã–≤–æ–¥ –≥–æ–¥–∞
+        cout << '\n';
+    
+}
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    cout << "À‡·Ó‡ÚÓÌ‡ˇ ‡·ÓÚ‡ π4. GIT\n";
-    cout << "¬‡Ë‡ÌÚ π8. »ÚÓ„Ë ÒÂÒÒËË\n";
-    cout << "¿‚ÚÓ: »‚‡Ì ÃËÓÌ˜ËÍ\n";
-    cout << "√ÛÔÔ‡: 24œ»\n";
+    cout << "–õ–∞–±–æ—Ä–∞—Ç–æ—Ä–Ω–∞—è —Ä–∞–±–æ—Ç–∞ ‚Ññ4. GIT\n";
+    cout << "–í–∞—Ä–∏–∞–Ω—Ç ‚Ññ8. –ò—Ç–æ–≥–∏ —Å–µ—Å—Å–∏–∏\n";
+    cout << "–ê–≤—Ç–æ—Ä: –ò–≤–∞–Ω –ú–∏—Ä–æ–Ω—á–∏–∫\n";
+    cout << "–ì—Ä—É–ø–ø–∞: 24–ü–ò\n";
     exam_subscription* subscriptions[MAX_FILE_ROWS_COUNT];
     int size;
     try
     {
-        read("data.txt", subscriptions, size);
-        cout << "***** »ÚÓ„Ë ÒÂÒÒËË *****\n\n";
-        for (int i = 0; i < size; i++)
-        {
-            /********** ‚˚‚Ó‰ ˜ËÚ‡ÚÂÎˇ **********/
-            cout << "—ÚÛ‰ÂÌÚ: ";
-            // ‚˚‚Ó‰ Ù‡ÏËÎËË
-            cout << subscriptions[i]->student.last_name << " ";
-            // ‚˚‚Ó‰ ÔÂ‚ÓÈ ·ÛÍ‚˚ ËÏÂÌË
-            cout << subscriptions[i]->student.first_name << " ";
-            // ‚˚‚Ó‰ ÔÂ‚ÓÈ ·ÛÍ‚˚ ÓÚ˜ÂÒÚ‚‡
-            cout << subscriptions[i]->student.middle_name << "";
-            cout << '\n';
-            cout << "ƒ‡Ú‡ ˝ÍÁ‡ÏÂÌ‡ : ";
-            cout << setfill('0') << subscriptions[i]->examdate.year << '-';
-            // ‚˚‚Ó‰ ÏÂÒˇˆ‡
-            cout << setw(2) << setfill('0') << subscriptions[i]->examdate.month << '-';
-            // ‚˚‚Ó‰ ˜ËÒÎ‡
-            cout << setw(2) << setfill('0') << subscriptions[i]->examdate.day;
-            cout << '\n';
-            /********** ‚˚‚Ó‰ ÍÌË„Ë **********/
-            cout << "ŒˆÂÌÍ‡ Ë ‰ËÒˆËÔÎËÌ‡ : ";
-            // ‚˚‚Ó‰ Ù‡ÏËÎËË ‡‚ÚÓ‡
-            cout << subscriptions[i]->mark << " ";
-            // ‚˚‚Ó‰ ÔÂ‚ÓÈ ·ÛÍ‚˚ ËÏÂÌË ‡‚ÚÓ‡
-            cout << '"' << subscriptions[i]->title << '"';
-            cout << '\n';
-            /********** ‚˚‚Ó‰ ‰‡Ú˚ ‚˚‰‡˜Ë **********/
-            // ‚˚‚Ó‰ „Ó‰‡
-            /********** ‚˚‚Ó‰ ‰‡Ú˚ ‚ÓÁ‚‡Ú‡ **********/
-            // ‚˚‚Ó‰ „Ó‰‡
-            cout << '\n';
+        read("data.txt" , subscriptions , size);
+        int option = 1;
+        int methodChoice = 2;
+        int criterionChoice = 2;
+        int filterChoice = 2;
+        bool (*check_function)(exam_subscription*) = NULL;
+        while (option != 2) {
+            cout << "–í—ã–±–µ—Ä–∏—Ç–µ –æ–ø—Ü–∏—é\n"
+                << "0 - –§–∏–ª—å—Ç—Ä–∞—Ü–∏—è\n"
+                << "1 - –°–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞\n"
+                << "2 - –í—ã—Ö–æ–¥\n";
+            cin >> option;
+            switch (option) {
+            case 0:
+                cout << "–í—ã–±–µ—Ä–∏—Ç–µ –∫—Ä–∏—Ç–µ—Ä–∏–π —Ñ–∏–ª—å—Ç—Ä–∞—Ü–∏–∏\n"
+                    << "0 - –î–∏—Å—Ü–∏–ø–ª–∏–Ω–∞ –∏—Å—Ç–æ—Ä–∏—è –±–µ–ª–∞—Ä—É—Å–∏\n"
+                    << "1 - –û—Ü–µ–Ω–∫–∞ –≤—ã—à–µ 7\n";
+                cin >> filterChoice;
+                break;
+            case 1:
+                cout << "–í—ã–±–µ—Ä–∏—Ç–µ –º–µ—Ç–æ–¥ —Å–æ—Ä—Ç–∏—Ä–æ–≤–∫–∏\n"
+                    << "0 - –°–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ –≤—Å—Ç–∞–≤–∫–∞–º–∏\n"
+                    << "1 - –°–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ —Å–ª–∏—è–Ω–∏–µ–º\n";
+                cin >> methodChoice;
+                cout << "–í—ã–±–µ—Ä–∏—Ç–µ –∫—Ä–∏—Ç–µ—Ä–∏–π —Å–æ—Ä—Ç–∏—Ä–æ–≤–∫–∏\n"
+                    << "0 - –ü–æ –≤–æ–∑—Ä–∞—Å—Ç–∞–Ω–∏—é —Ñ–∞–º–∏–ª–∏–∏ —Å—Ç—É–¥–µ–Ω—Ç–∞\n"
+                    << "1 - –ü–æ –≤–æ–∑—Ä–∞—Å—Ç–∞–Ω–∏—é –Ω–∞–∑–≤–∞–Ω–∏—è –¥–∏—Ü–∏–ø–ª–∏–Ω—ã\n";
+                cin >> criterionChoice;
+                break;
+            case 2:
+
+                break;
+            default:
+                option = 2;
+
+            }
+            switch (filterChoice) {
+            case 0:
+                check_function = check_exam_subscription_by_author;
+                break;
+            case 1:
+                check_function = check_exam_subscription_by_mark;
+                break;
+            default:
+                check_function = NULL;
+            }
+            if (check_function)
+            {
+                int new_size;
+                exam_subscription** filtered = filter(subscriptions, size, check_function, new_size);
+                for (int i = 0; i < new_size; i++)
+                {
+                    output(filtered[i]);
+                }
+                delete[] filtered;
+            }
+            if ((methodChoice == 0 || methodChoice == 1) && (criterionChoice == 0 || criterionChoice == 1)) {
+                SortFunc sortFunc = sort_methods[methodChoice];
+                CompareFunc cmpFunc = compare_methods[criterionChoice];
+                
+                sortFunc(subscriptions, size, cmpFunc);
+
+                for (int i = 0; i < size; i++) {
+
+                    output(subscriptions[i]);
+                }
+               
+            }
+
         }
         for (int i = 0; i < size; i++)
         {
@@ -60,5 +132,5 @@ int main()
     {
         cout << error << '\n';
     }
-   
+
 }

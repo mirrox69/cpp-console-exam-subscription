@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="file_reader.cpp" />
     <ClCompile Include="filter.cpp" />
+    <ClCompile Include="insert.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="exam_subscription.h" />
     <ClInclude Include="file_reader.h" />
     <ClInclude Include="filter.h" />
+    <ClInclude Include="insert.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

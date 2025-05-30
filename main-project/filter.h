@@ -40,7 +40,7 @@ bool check_exam_subscription_by_author(exam_subscription* element);
 */
 
 
-bool check_exam_subscription_by_date(exam_subscription* element);
+bool check_exam_subscription_by_mark(exam_subscription* element);
 
 /*
   check_book_subscription_by_date:
